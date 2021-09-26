@@ -26,7 +26,7 @@ sudo service apache2 reload
 ##########################################
 # First we move into the tmp folder and use wget to pull the installer.
 cd /tmp/
-wget https://releases.wikimedia.org/mediawiki/1.36/mediawiki-1.36.0.tar.gz
+wget https://releases.wikimedia.org/mediawiki/1.36/mediawiki-1.36.1.tar.gz
 
 # Next we decompress the tar.gz file, known as "unzipping"
 tar -xvzf /tmp/mediawiki-*.tar.gz
@@ -45,7 +45,7 @@ sudo mv mediawiki-*/* /var/lib/mediawiki
 sudo mysql -u root -p
 
 # Next you will see a line that says "mysql>" - this denotes that you are in the MySQL shell now.
-# Here we will create the new user and set the password
+# Here we will create the new user and set the password (replace the user and the password with your own)
 CREATE USER 'my_wiki_user'@'localhost' IDENTIFIED BY 'P@ssw0rd';
 
 # Next will create a database for the wiki
@@ -53,7 +53,7 @@ CREATE DATABASE my_wiki;
 
 # We need to set this database as the MySQL default DB
 use my_wiki;
-# We need to allow the my_wiki_user access to the my_wiki DB
+# We need to allow the my_wiki_user access to the my_wiki DB (replace with the user you just created)
 GRANT ALL ON my_wiki.* TO 'my_wiki_user'@'localhost';
 quit;
 
